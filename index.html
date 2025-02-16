@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <div style="height: 100px;"></div>
+      <img src="./src/an.gif" alt="" class="img" id="image">
+      <span  id="text">宝宝以后做的我女朋友吧？</span>
+      <div class="butt">
+        <button class="yes">好哒</button>
+        <button class="no">滚</button>
+      </div>
+    </div>
+</body>
+<script>
+    const imageElement = document.getElementById('image');
+    const textElement = document.getElementById('text'); // 获取文字元素
+    const yesButton = document.querySelector('.yes');
+    const noButton = document.querySelector('.no');
+    const images = [
+    './src/an.gif', // 初始图片
+    './src/jk.gif', // 第二张图片
+    './src/jw.gif', // 第三张图片
+    './src/sx.gif'  // 第四张图片
+];
+const texts = [
+            '宝宝以后做的我女朋友吧？', // 初始文字
+            '干嘛！你真拒绝啊？', // 第二段文字
+            '不是？你来真的啊？', // 第三段文字
+            '故意的还是不小心？呜呜呜' // 第四段文字
+        ];
+        const imgs = './src/hh.gif'
+        const te = '我就知道你不会拒绝我的 嘻嘻'
+
+let clickCount = 0; // 记录点击次数
+
+    noButton.addEventListener('click', () => {
+        if (clickCount < images.length - 1) {
+            // 切换图片
+            clickCount++;
+            imageElement.src = images[clickCount];
+            textElement.textContent = texts[clickCount]; // 更新文字内容
+        }
+        // 获取当前“好哒”按钮的字体大小和内边距
+        let currentFontSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+        let currentPaddingTop = parseFloat(window.getComputedStyle(yesButton).paddingTop);
+        let currentPaddingRight = parseFloat(window.getComputedStyle(yesButton).paddingRight);
+
+        // 增加20%
+        let newFontSize = currentFontSize * 1.2;
+        let newPaddingTop = currentPaddingTop * 1.2;
+        let newPaddingRight = currentPaddingRight * 1.2;
+
+        // 设置新的字体大小和内边距
+        yesButton.style.fontSize = `${newFontSize}px`;
+        yesButton.style.padding = `${newPaddingTop}px ${newPaddingRight}px`;
+    });
+    yesButton.addEventListener('click', () => {
+        imageElement.src = imgs;
+            textElement.textContent = te; // 更新文字内容
+            yesButton.style.display = 'none';
+            noButton.style.display = 'none';
+            alert('爱你哦');
+
+    })
+   
+</script>
+<style>
+    .box{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .img{
+        width: 200px;
+        height: 200px;
+    }
+    .butt{
+        display: flex;
+        justify-content: space-around;
+        margin-top: 30px;
+        width: 100%;
+        height: 100%;
+    }
+    .yes{
+        border-radius: 20px;
+        background-color: rgb(223, 18, 18);
+        border: 1px solid rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
+        font-size: 16px;  
+        padding: 10px 20px; /* 初始内边距 */
+        cursor: pointer;
+        transition: all 0.3s ease; /* 添加平滑过渡效果 */  
+    }
+    .no{
+        border-radius: 20px;
+        background-color: rgba(3, 241, 35, 0.311);
+        border: 1px solid rgb(255, 255, 255);
+        color: rgb(255, 255, 255);
+        font-size: 16px;    
+        padding: 10px 20px; /* 初始内边距 */
+        cursor: pointer;
+        transition: all 0.3s ease; /* 添加平滑过渡效果 */
+    }
+</style>
+</html>
